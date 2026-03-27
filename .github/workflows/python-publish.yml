@@ -20,7 +20,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.x'
+        python-version: '3.12'
     
     - name: Install dependencies
       run: |
@@ -33,6 +33,7 @@ jobs:
         RELEASE_TAG: ${{ github.event.release.tag_name }}
       run: |
         python - <<'PY'
+        import ast
         import os
         import pathlib
         import sys
@@ -42,9 +43,22 @@ jobs:
         pyproject_data = tomllib.loads((root / "pyproject.toml").read_text(encoding="utf-8"))
         pyproject_version = pyproject_data["project"]["version"]
 
-        namespace = {}
-        exec((root / "ytlookup" / "__init__.py").read_text(encoding="utf-8"), namespace)
-        init_version = namespace.get("__version__")
+        init_text = (root / "ytlookup" / "__init__.py").read_text(encoding="utf-8")
+        init_tree = ast.parse(init_text)
+        init_version = None
+        for node in init_tree.body:
+            if isinstance(node, ast.Assign):
+                for target in node.targets:
+                    if isinstance(target, ast.Name) and target.id == "__version__":
+                        if isinstance(node.value, ast.Constant) and isinstance(node.value.value, str):
+                            init_version = node.value.value
+                        break
+            if init_version is not None:
+                break
+
+        if init_version is None:
+            print("Could not find __version__ string assignment in ytlookup/__init__.py")
+            sys.exit(1)
 
         release_tag = os.environ["RELEASE_TAG"]
         normalized_tag = release_tag[1:] if release_tag.startswith("v") else release_tag
@@ -85,6 +99,7 @@ jobs:
         path: dist/
     
     - name: Publish package
+      if: github.event_name == 'release'
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
         packages-dir: dist/
