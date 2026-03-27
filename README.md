@@ -7,7 +7,7 @@
 [![Python Version](https://img.shields.io/badge/python-3.8%2B-blue?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)](LICENSE)
 [![GitHub Stars](https://img.shields.io/github/stars/CertifiedCoders/ytlookup?style=for-the-badge&logo=github)](https://github.com/CertifiedCoders/ytlookup)
-[![PyPI Version](https://img.shields.io/pypi/v/ytlookup?style=for-the-badge&logo=pypi&logoColor=white)](https://pypi.org/project/ytlookup/)
+[![PyPI Version](https://img.shields.io/pypi/v/ytlookup?style=for-the-badge&logo=pypi&logoColor=white&cacheSeconds=0)](https://pypi.org/project/ytlookup/)
 
 
 </div>
