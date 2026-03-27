@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ytlookup"
+version = "1.0.0"
+description = "Blazing-fast async YouTube search library - no API key required"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+
+authors = [
+    {name = "Certified Coders", email = "certifiedcoders01@gmail.com"}
+]
+keywords = ["youtube", "search", "async", "api", "video", "playlist", "music"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Multimedia :: Sound/Audio",
+]
+dependencies = [
+    "aiohttp>=3.8.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/CertifiedCoders/ytlookup"
+Documentation = "https://github.com/CertifiedCoders/ytlookup#readme"
+Repository = "https://github.com/CertifiedCoders/ytlookup"
+"Bug Tracker" = "https://github.com/CertifiedCoders/ytlookup/issues"
+
+[tool.setuptools]
+packages = ["ytlookup"]
