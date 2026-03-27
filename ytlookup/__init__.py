@@ -7,7 +7,7 @@ from .search import videosearch
 from .video import Video
 from .playlist import Playlist
 
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 __author__ = "Certified Coders"
 __license__ = "MIT"
 
